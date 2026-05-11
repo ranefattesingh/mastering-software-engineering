@@ -6,9 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning Vue</title>
     <script src="https://unpkg.com/vue@3.0.2"></script>
+
+    <style>
+        body {
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+
+        p,
+        h1,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+            background: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        li.fav {
+            background: #ff9ed2;
+            color: white;
+        }
+
+        .box {
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background: #ddd;
+            margin: 20px;
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Tutorial 2 -->
     <h1>Hello, Vue :)</h1>
 
     <!-- Outside of Vue scope -->
@@ -28,13 +69,47 @@
             <span v-if="showBooks">Hide Books</span>
             <span v-else>Show Books</span>
         </button>
-        
+
         <!-- adds CSS property displat:none to the element -->
         <div v-show="showBooks">currently showing books</div>
+
+        <!-- Tutorial 3 -->
+        <br>
+        <!-- Mouse Events -->
+        <div class="box" @mouseover="handleEvent($event, 5)">mouseover (enter)</div>
+        <div class="box" @mouseleave="handleEvent">mouseleave (exit)</div>
+        <div class="box" @dblclick="handleEvent">double click</div>
+        <div class="box" @mousemove="handleMousemove">position - {{ x }}, {{ y }}</div>
+
+        <!-- Rendering list -->
+        <div v-if="showBooks">
+            <ul>
+                <li v-for="book in books" :class="{ fav: book.isFav }" :key="book.id" @click="toggleFav(book)">
+                    <img :src="book.img" :alt="book.title">
+                    <h3>{{ book.title }}</h3>
+                    <p>{{ book.author }}</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Attribute Binding => binding dynamic value to attributes -->
+        <!-- v-bind:href or :href -->
+        <a :href="url">my github page</a>
+
+        <!-- Computed Properties -->
+         <h2>Computed Properties example below</h2>
+        <div v-if="showBooks">
+            <ul>
+                <li v-for="book in filteredBooks" :class="{ fav: book.isFav }" :key="book.id" @click="toggleFav(book)">
+                    <img :src="book.img" :alt="book.title">
+                    <h3>{{ book.title }}</h3>
+                    <p>{{ book.author }}</p>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <!-- Outside of Vue Scope -->
-
     <script src="app.js"></script>
 </body>
 
