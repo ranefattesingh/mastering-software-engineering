@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Vue</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+
+<body>
+    <h1>Hello, Vue :)</h1>
+
+    <!-- Outside of Vue scope -->
+
+    <div id="app"> <!-- This will get `data-v-app` in tags -->
+        <!-- Everything inside this div will be managed by the Vue instance -->
+        <h2>This is a template</h2>
+        <div v-if="showBooks">
+            <p>{{ title }} - {{ author }} - {{ age }}</p>
+        </div>
+        <button v-on:click="age++">Increase age by 1</button>
+        <button v-on:click="age--">Decrease age by 1</button>
+        <div @click="changeTitle">Change Title</div>
+
+        <!-- v-if removes and adds element to the DOM -->
+        <button @click="toggleShowBooks">
+            <span v-if="showBooks">Hide Books</span>
+            <span v-else>Show Books</span>
+        </button>
+        
+        <!-- adds CSS property displat:none to the element -->
+        <div v-show="showBooks">currently showing books</div>
+    </div>
+
+    <!-- Outside of Vue Scope -->
+
+    <script src="app.js"></script>
+</body>
+
+</html>
