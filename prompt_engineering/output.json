@@ -1,0 +1,143 @@
+{
+  "document": {
+    "title": "To-Do List Application Requirements",
+    "version": "1.0",
+    "status": "draft",
+    "lastUpdated": "2026-05-30"
+  },
+  "overview": {
+    "purpose": "Define the functional and non-functional requirements for a secure To-Do List backend service for pilots.",
+    "scope": {
+      "inScope": [
+        "Task creation, update, completion, and deletion",
+        "User authentication and access control",
+        "Audit logging for all task modifications",
+        "Data encryption at rest and in transit"
+      ],
+      "outOfScope": [
+        "Frontend user interface",
+        "Integration with third-party task managers"
+      ]
+    }
+  },
+  "definitions": [
+    {
+      "term": "Task",
+      "definition": "A single unit of work tracked by the application."
+    }
+  ],
+  "requirements": {
+    "functional": [
+      {
+        "id": "FR-1",
+        "title": "Create Task",
+        "description": "The system shall allow an authenticated user to create a new task with a title and optional description.",
+        "priority": "high",
+        "acceptanceCriteria": [
+          "User can enter a task title and optional description",
+          "Task is added to the user's task list"
+        ]
+      },
+      {
+        "id": "FR-2",
+        "title": "Update Task",
+        "description": "The system shall allow an authenticated user to update the title and description of their own tasks.",
+        "priority": "high",
+        "acceptanceCriteria": [
+          "User can modify the title and description of an existing task",
+          "Changes are reflected in the user's task list"
+        ]
+      },
+      {
+        "id": "FR-3",
+        "title": "Complete Task",
+        "description": "The system shall allow an authenticated user to mark their own tasks as completed or not completed.",
+        "priority": "high",
+        "acceptanceCriteria": [
+          "User can toggle the completion status of a task",
+          "Task status is updated in the user's task list"
+        ]
+      },
+      {
+        "id": "FR-4",
+        "title": "Delete Task",
+        "description": "The system shall allow an authenticated user to delete their own tasks.",
+        "priority": "high",
+        "acceptanceCriteria": [
+          "User can delete a task from their task list",
+          "Task is removed from the system"
+        ]
+      },
+      {
+        "id": "FR-5",
+        "title": "Retrieve Tasks",
+        "description": "The system shall provide an API to retrieve all tasks for the authenticated user, including their completion status.",
+        "priority": "high",
+        "acceptanceCriteria": [
+          "User can request a list of all their tasks",
+          "Each task includes its completion status"
+        ]
+      },
+      {
+        "id": "FR-6",
+        "title": "Authentication and Access Control",
+        "description": "All API endpoints shall require authentication and enforce user-level access control.",
+        "priority": "critical",
+        "acceptanceCriteria": [
+          "Unauthenticated requests are rejected",
+          "Users can only access their own tasks"
+        ]
+      }
+    ],
+    "nonFunctional": [
+      {
+        "id": "NFR-1",
+        "type": "security",
+        "description": "All data at rest shall be encrypted using industry-standard algorithms (e.g., AES-256 or better)."
+      },
+      {
+        "id": "NFR-2",
+        "type": "security",
+        "description": "All data in transit shall be encrypted using TLS 1.3 or higher."
+      },
+      {
+        "id": "NFR-3",
+        "type": "auditability",
+        "description": "The system shall log all access and modification events to tasks, including user ID, timestamp, and action."
+      },
+      {
+        "id": "NFR-4",
+        "type": "robustness",
+        "description": "The system shall reject requests with malformed or invalid input and return appropriate error codes."
+      },
+      {
+        "id": "NFR-5",
+        "type": "performance",
+        "description": "The system shall respond to 95% of API requests within 500ms under normal load."
+      },
+      {
+        "id": "NFR-6",
+        "type": "security",
+        "description": "The system shall be resistant to common web vulnerabilities, including but not limited to SQL injection, XSS, and CSRF."
+      }
+    ]
+  },
+  "openQuestions": [
+    {
+      "id": "OQ-1",
+      "question": "What authentication mechanism should be used (e.g., OAuth2, company SSO, etc.)?"
+    },
+    {
+      "id": "OQ-2",
+      "question": "What is the expected maximum number of concurrent users?"
+    },
+    {
+      "id": "OQ-3",
+      "question": "Are there any regulatory requirements for data retention or deletion?"
+    },
+    {
+      "id": "OQ-4",
+      "question": "Should the system support multi-device synchronization for tasks?"
+    }
+  ]
+}
