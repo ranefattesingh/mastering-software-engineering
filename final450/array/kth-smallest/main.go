@@ -68,3 +68,7 @@ func FindKthSmallestElement(arr []int, k int) (int, error) {
 
 	return pq[k], nil
 }
+
+func main() {
+	FindKthSmallestElement([]int{10, 5, 4, 3, 48, 6, 2, 33, 53, 10}, 4)
+}
