@@ -14,6 +14,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.3.0
         version: 4.3.0(vite@8.0.16(@types/node@24.13.0)(jiti@2.7.0))
+      '@tanstack/vue-table':
+        specifier: ^8.21.3
+        version: 8.21.3(vue@3.5.35(typescript@6.0.3))
       '@vee-validate/zod':
         specifier: ^4.15.1
         version: 4.15.1(vue@3.5.35(typescript@6.0.3))(zod@4.4.3)
@@ -26,6 +29,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      moment:
+        specifier: ^2.30.1
+        version: 2.30.1
       reka-ui:
         specifier: ^2.9.9
         version: 2.9.9(vue@3.5.35(typescript@6.0.3))
@@ -338,8 +344,18 @@ packages:
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7 || ^8
 
+  '@tanstack/table-core@8.21.3':
+    resolution: {integrity: sha512-ldZXEhOBb8Is7xLs01fR3YEc3DERiz5silj8tnGkFZytt1abEvl/GhUmCE0PMLaMPTa3Jk4HbKmRlHmu+gCftg==}
+    engines: {node: '>=12'}
+
   '@tanstack/virtual-core@3.17.0':
     resolution: {integrity: sha512-gOxY/hFkPh/XQYhnThBHzkbkX3Ed+z/iushyz+R+JAr213aXxUDgQoTgTdrDpBSRsjFM73P/KfUyWmaF9WHMkQ==}
+
+  '@tanstack/vue-table@8.21.3':
+    resolution: {integrity: sha512-rusRyd77c5tDPloPskctMyPLFEQUeBzxdQ+2Eow4F7gDPlPOB1UnnhzfpdvqZ8ZyX2rRNGmqNnQWm87OI2OQPw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      vue: '>=3.2'
 
   '@tanstack/vue-virtual@3.13.28':
     resolution: {integrity: sha512-A+jWpXtMpWXKhGLKQrXeC9mk1VgYeMWSJ+o0CTCEi+HLYMSQFdVmPG9lJz7d4XJyIkc5xVwZU9QY67QpScqnxA==}
@@ -590,6 +606,9 @@ packages:
 
   mitt@3.0.1:
     resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
+
+  moment@2.30.1:
+    resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
 
   muggle-string@0.4.1:
     resolution: {integrity: sha512-VNTrAak/KhO2i8dqqnqnAHOa3cYBwXEZe9h+D5h/1ZqFSTEFHdM65lR7RoIqq3tBBYavsOXV84NoHXZ0AkPyqQ==}
@@ -969,7 +988,14 @@ snapshots:
       tailwindcss: 4.3.0
       vite: 8.0.16(@types/node@24.13.0)(jiti@2.7.0)
 
+  '@tanstack/table-core@8.21.3': {}
+
   '@tanstack/virtual-core@3.17.0': {}
+
+  '@tanstack/vue-table@8.21.3(vue@3.5.35(typescript@6.0.3))':
+    dependencies:
+      '@tanstack/table-core': 8.21.3
+      vue: 3.5.35(typescript@6.0.3)
 
   '@tanstack/vue-virtual@3.13.28(vue@3.5.35(typescript@6.0.3))':
     dependencies:
@@ -1215,6 +1241,8 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.5.5
 
   mitt@3.0.1: {}
+
+  moment@2.30.1: {}
 
   muggle-string@0.4.1: {}
 

@@ -1,8 +1,7 @@
 <script setup lang="ts">
-    import { Button } from '@/components/ui/button'
-import Registration from './components/views/auth/Registration.vue';
+import Home from './components/views/Home.vue';
 </script>
 
 <template>
-    <Registration/>
+    <Home/>
 </template>
