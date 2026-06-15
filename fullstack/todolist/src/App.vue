@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import AddTodo  from '@/components/todo/AddTodo.vue';
 import ListTodo from '@/components/todo/ListTodo.vue';
-import Todo from '@/components/todo/Todo.vue';
 import type { TodoItem } from '@/types/todo-item';
 import { ref } from 'vue';
 
@@ -19,13 +18,19 @@ function handleAddTodo(newTodo: string) {
 }
 
 function handleStatusChange(id: number) {
-    console.log('clicked', id)
-
     for (let i = 0; i < todos.value.length; i++) {
         if (todos.value[i].Id === id) {
             todos.value[i].Status = !todos.value[i].Status
         }
     }
+}
+
+function deleteTodo(id: number) {
+    const index = todos.value.findIndex(todo => todo.Id === id)
+    if (isNaN(index) && index > 0) return
+
+
+    todos.value.splice(index, 1)
 }
 
 </script>
@@ -43,7 +48,11 @@ function handleStatusChange(id: number) {
         <div class="col-span-3"></div>
 
         <div class="col-span-4">
-            <ListTodo :todos="todos" @toggle-status="handleStatusChange" />
+            <ListTodo 
+                :todos="todos" 
+                @toggle-status="handleStatusChange" 
+                @delete-todo="deleteTodo"
+            />
         </div>
     </div>
 </template>

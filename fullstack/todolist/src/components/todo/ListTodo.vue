@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<{
     (checkboxClick: 'toggle-status', id: number): void
+    (deleteTodo: 'delete-todo', id: number): void
 }>()
 
 onMounted(() => {
@@ -28,5 +29,6 @@ onMounted(() => {
         :key="todo.Id" 
         :todo="todo" 
         @toggle-status="(id) => emit('toggle-status', id)"
+        @delete-todo="(id) => emit('delete-todo', id)"
     />
 </template>

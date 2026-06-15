@@ -23,8 +23,14 @@ const handleStatusChange = () => {
     emit('toggle-status', id)
 }
 
+const handleDeleteTodo = () => {
+    const id = props.todo?.Id ?? 0
+    emit('delete-todo', id)
+}
+
 const emit = defineEmits<{
     (checkboxClick: 'toggle-status', id: number): void
+    (deleteClick: 'delete-todo', id: number): void
 }>()
 
 function isCompleted(): boolean {
@@ -55,6 +61,7 @@ function isCompleted(): boolean {
                 <SquarePen />
             </Button>
             <Button 
+                @click="handleDeleteTodo"
                 variant="outline" size="sm"
                 class="text-red-600 hover:text-red-700 hover:bg-red-50 border-red-600 hover:border-red-700"
             >

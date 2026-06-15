@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import Todo from '@/components/todo/Todo.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import type { TodoItem } from '@/types/todo-item';
-import { reactive, ref } from 'vue';
-import { number } from 'zod';
-import { id } from 'zod/locales';
+import { ref } from 'vue';
 
 const title =  ref<string>('')
 
