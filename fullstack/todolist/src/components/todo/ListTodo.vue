@@ -15,6 +15,9 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits<{
     (checkboxClick: 'toggle-status', id: number): void
     (deleteTodo: 'delete-todo', id: number): void
+    (deleteTodo: 'edit-save-todo', id: number, newTitle: string): void
+    (moveTodoUp: 'move-todo-up', id: number): void
+    (moveTodoDown: 'move-todo-down', id: number): void
 }>()
 
 onMounted(() => {
@@ -27,8 +30,12 @@ onMounted(() => {
     <Todo 
         v-for="todo in todos" 
         :key="todo.Id" 
-        :todo="todo" 
+        :todo="todo"
+        :total="todos.length" 
         @toggle-status="(id) => emit('toggle-status', id)"
         @delete-todo="(id) => emit('delete-todo', id)"
+        @edit-save-todo="(id, newTitle) => emit('edit-save-todo', id, newTitle)"
+        @move-todo-up="(id) => emit('move-todo-up', id)"
+        @move-todo-down="(id) => emit('move-todo-down', id)"
     />
 </template>

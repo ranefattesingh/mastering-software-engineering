@@ -25,13 +25,47 @@ function handleStatusChange(id: number) {
     }
 }
 
-function deleteTodo(id: number) {
+function handleUpdateTodo(id: number, newTitle: string) {
+    const index = todos.value.findIndex(todo => todo.Id === id)
+    if (isNaN(index) && index > 0) return
+
+
+    todos.value[index].Title = newTitle
+}
+
+function handleDeleteTodo(id: number) {
     const index = todos.value.findIndex(todo => todo.Id === id)
     if (isNaN(index) && index > 0) return
 
 
     todos.value.splice(index, 1)
 }
+
+function handleMoveTodoUp(id: number) {
+    const index = todos.value.findIndex(todo => todo.Id === id)
+    if (index <= 0) return
+    handleMoveTodo(index, index-1)
+}
+
+function handleMoveTodoDown(id: number) {
+    const index = todos.value.findIndex(todo => todo.Id === id)
+    if (index >= todos.value.length - 1) return
+    handleMoveTodo(index, index+1)
+}
+
+function handleMoveTodo(src: number, dest: number) {
+    const [movedItem] = todos.value.splice(src, 1)
+    todos.value.splice(dest, 0, movedItem)
+    const srcOrder = todos.value[src].Order
+    todos.value[src].Order = todos.value[dest].Order 
+    todos.value[dest].Order = srcOrder
+
+    console.log(todos.value)
+
+    
+}
+
+
 
 </script>
 
@@ -51,7 +85,10 @@ function deleteTodo(id: number) {
             <ListTodo 
                 :todos="todos" 
                 @toggle-status="handleStatusChange" 
-                @delete-todo="deleteTodo"
+                @delete-todo="handleDeleteTodo"
+                @edit-save-todo="handleUpdateTodo"
+                @move-todo-up="handleMoveTodoUp"
+                @move-todo-down="handleMoveTodoDown"
             />
         </div>
     </div>
