@@ -70,10 +70,10 @@ function handleMoveTodo(src: number, dest: number) {
 </script>
 
 <template>
-    <div class="grid grid-cols-9">
-        <div class="col-span-3"></div>
-        <div  class="col-span-4 grid grid-cols-3">
-            <div class="col-span-2">
+    <div class="sm:grid sm:grid-cols-9">
+        <div class="sm:col-span-3"></div>
+        <div  class="sm:col-span-4 sm:grid sm:grid-cols-3">
+            <div class="sm:col-span-2">
                 <AddTodo @add-todo="handleAddTodo"/>
             </div>
             <div class="col-span-1"></div>
