@@ -83,7 +83,7 @@ function isCompleted(): boolean {
                 <Checkbox id="terms"
                     :model-value="props.todo?.Status ?? false"
                     @update:model-value="handleStatusChange"
-                    class="-4 w-4 appearance-none rounded-full border border-gray-400 checked:bg-blue-600"
+                    class="h-4 w-4 rounded-full border border-gray-400 data-[state=checked]:bg-blue-600 data-[state=checked]:border-blue-600 data-[state=checked]:text-blue-600"
                 />
                 <ItemTitle :class="[isCompleted() ? 'line-through': '', 'px-2']">
                     <span v-if="!isEditing">{{ todo?.Title }}</span>
